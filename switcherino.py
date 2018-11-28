@@ -136,7 +136,6 @@ class TwitchBot(irc.bot.SingleServerIRCBot):
 
     def on_pubmsg(self, c, e):
         source_user = e.source.split('!')[0]
-        print(source_user)  # TODO remove this
 
         if source_user in self.listen_usernames:
             msg = e.arguments[0]
