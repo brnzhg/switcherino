@@ -185,6 +185,7 @@ class TwitchBot(irc.bot.SingleServerIRCBot):
                 print(listen_username)
 
         elif cmd == "reload" or cmd == "r":
+            self.phone_controller.setup_clicks()
             self.fired = False
             print('Ready to call again')
 
@@ -234,7 +235,7 @@ def main():
     bot = TwitchBot(config['Login']['ClientUsername']
                     , config['Login']['ClientId']
                     , config['Login']['ClientToken']
-                    , config['DEFAULT']['Channel']
+                    , config['DEFAULT']['Channel'].lower()
                     , phone_controller
                     , config['DEFAULT']['CommandUsername'].lower()
                     , [lu.lower() for lu in config['DEFAULT']['ListenUsernames'].split(',')])
